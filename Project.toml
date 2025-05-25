@@ -1,7 +1,7 @@
 name = "ClusterUtils"
 uuid = "651d1c28-5f8d-4b26-91d9-468bf8b4a262"
 authors = ["Joao Hespanha <hespanha@ece.ucsb.edu>"]
-version = "1.0.1"
+version = "1.0.0"
 
 [deps]
 ClusterManagers = "34f1f09b-3a8b-5176-ab39-66d58a4d544e"
