@@ -233,13 +233,13 @@ function Distributed.connect(manager::ElasticManager, pid::Int, config::WorkerCo
     # master connecting to workers
     if config.io !== nothing
         (bind_addr, port::Int) = Distributed.read_worker_host_port(config.io)
-        pubhost = something(config.host, bind_addr)
-        config.host = pubhost
+        pub_host = something(config.host, bind_addr)
+        config.host = pub_host
         config.port = port
     else
-        pubhost = Distributed.notnothing(config.host)
+        pub_host = Distributed.notnothing(config.host)
         port = Distributed.notnothing(config.port)
-        bind_addr = something(config.bind_addr, pubhost)
+        bind_addr = something(config.bind_addr, pub_host)
     end
 
     ## CONNECTION FROM MASTER TO WORKERS LOOKS LIKE BLOCK WITH SLURP
@@ -357,7 +357,7 @@ Launch workers in a remote host to join an `ElasticManagerWithTunnel` cluster ma
 + `launchTunnel::Bool=false`: when `true` the tunnel is launched on the workers to connect to the
         public host
 + `dryrun::Bool=true`: when `true` does not actually launch any processes, just shows the commands
-        that would have been executed to luanch the workers
+        that would have been executed to launch the workers
 + `quiet::Bool=false`: when `false` shows the jobs running on the cluster, using 
         `getRunningJobs(cluster)`
 
