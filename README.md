@@ -1,10 +1,17 @@
 # ClusterUtils
 
-This package provide a set of tools to streamline 
-+ launching julia scrips on a remote hosts using `ssh` 
-+ launching julia scripts on a computer clusters using [Slurm](https://slurm.schedmd.com) (well
+This package provide a set of tools to streamline the following operations:
++ Launching julia scrips on a remote hosts using `ssh` 
+
++ Launching julia scripts on a computer clusters using [Slurm](https://slurm.schedmd.com) (well
   tested) or [PBS](https://www.openpbs.org) (less tested).
-+ use `Distributed.jl` with workers running on a cluster 
+
+3) Using `Distributed.jl` with workers running on a cluster. 
+   
+   This functionality builds upon
+   [ClusterManagers](https://github.com/JuliaParallel/ClusterManagers.jl/tree/master), but uses
+   ssh-tunneling to enable communication between the cluster workers and a local computer that does
+   not have a public IP addressed (e.g., in a private network with NAT).
 
 > [!Warning] 
 > Running `Distributed.jl` with workers on a cluster has not been well tested and should be viewed
