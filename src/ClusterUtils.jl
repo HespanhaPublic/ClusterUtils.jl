@@ -1,3 +1,7 @@
+# Update registry LocalRegistry with
+# 1. Increase version in Project.toml
+# 2. register(registry="https://github.com/HespanhaPublic/HespanhaRegistry.jl")
+
 """
 Set of function that simplify running jobs on remote clusters
 

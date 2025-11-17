@@ -292,7 +292,7 @@ function getFolderJobs(
     jobsData::Vector{Dict{String,String}} = Dict{String,String}[]
     errWildcard = joinpath(cluster.jobsFolderRemote, wildcard, "*.iam-pbs.ER")
     cmd = sshCmd(cluster, `ls -1 $errWildcard`) # -1 name get one per line
-    (out, err, rc) = conditionalRun(cmd; dryrun=false, quiet=true)
+    (out::String, err::String, rc) = conditionalRun(cmd; dryrun=false, quiet=true)
     errFiles = split(out, '\n')
     display(errFiles)
     return errFiles
@@ -352,7 +352,7 @@ function downloadJob(
     else
         cmd = `rsync --prune-empty-dirs -avz $(cluster.username)@$(cluster.ssh2submit):$jobFolderRemote $(cluster.jobsFolderLocal)`
     end
-    conditionalRun(cmd; quiet, dryrun)
+    return conditionalRun(cmd; quiet, dryrun)
 end
 
 """
@@ -378,5 +378,5 @@ function downloadAllJobs(
     else
         cmd = `rsync --prune-empty-dirs -avz $(cluster.username)@$(cluster.ssh2submit):$jobFolderRemote $(cluster.jobsFolderLocal)`
     end
-    conditionalRun(cmd; quiet, dryrun)
+    return conditionalRun(cmd; quiet, dryrun)
 end

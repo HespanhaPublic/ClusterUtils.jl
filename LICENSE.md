@@ -1,4 +1,4 @@
-The Plots.jl package is licensed under the MIT "Expat" License:
+The ClusterUtils.jl package is licensed under the MIT "Expat" License:
 
 Copyright (c) 2025: Joao Hespanha
 
